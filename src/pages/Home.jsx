@@ -24,7 +24,7 @@ function Home() {
   });
 
   // parse and set fetched details
-  const handleDetails = useHandleDetails(setFetchedDetails, data, error);
+  useHandleDetails(setFetchedDetails, data, error);
 
   // handle search
   function handleSubmit(e) {
