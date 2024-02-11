@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* // setting tailwind necessities// */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* // Set css variables to make color picking collected and easy to expand // */
+:root {
+  --white: #fff;
+  --gray: #dacccc;
+  --lighGray: #d4d5d6;
+  --tile: #8dc2b5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* // set font to "Barlow", and set font-size to 64.2%, to make rem value equal to 10px // */
+body {
+  font-family: "Barlow", sans-serif;
+  font-size: 62.5%;
+}
+/* // set a maximum width and center application, to manage the responsiveness on large monitors // */
+.App {
+  max-width: 150rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* // Blurring right background // */
+/* // !! backdrop-filter is not supported in some browser, but its used anyways. Because the blurr effect isnt really important, and there is a backup for it when it fails */
+.Right {
+  backdrop-filter: blur(0.5rem);
+}
+
+@layer components {
+  .borderLine {
+    @apply border-[var(--gray)] border-b-[.15rem];
+  }
+  .listStyle {
+    @apply flex flex-col gap-[1rem] pb-[2.5rem] text-[1.2rem] borderLine;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 30%;
+  }
 }
