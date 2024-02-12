@@ -9,10 +9,12 @@
   --gray: #dacccc;
   --lighGray: #d4d5d6;
   --tile: #8dc2b5;
+  --deepTile: #66857e;
+  --black: #000;
 }
 
 /* // set font to "Barlow", and set font-size to 64.2%, to make rem value equal to 10px // */
-body {
+html {
   font-family: "Barlow", sans-serif;
   font-size: 62.5%;
 }
@@ -29,17 +31,47 @@ body {
   backdrop-filter: blur(0.5rem);
 }
 
+/* // style components // */
 @layer components {
   .borderLine {
     @apply border-[var(--gray)] border-b-[.15rem];
   }
   .listStyle {
-    @apply flex flex-col gap-[1rem] pb-[2.5rem] text-[1.2rem] borderLine;
+    @apply flex flex-col gap-[1rem] pb-[2rem] sm:pb-[3rem] text-[1.7rem] borderLine;
+  }
+  .textHoverWhite {
+    @apply hover:text-[var(--white)] duration-500 hover:font-bold cursor-pointer;
+  }
+  .textHoverBlack {
+    @apply hover:text-[var(--black)] duration-300 cursor-pointer;
+  }
+  .searchHover {
+    @apply hover:bg-[var(--deepTile)] duration-300 hover:rounded-b-lg;
   }
 }
 
-@media only screen and (max-width: 700px) {
-  body {
-    font-size: 30%;
+
+/* // responsiveness // */
+@media only screen and (max-width: 670px) {
+  html {
+    font-size: 59%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  html {
+    font-size: 58%;
   }
 }

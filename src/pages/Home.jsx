@@ -1,36 +1,16 @@
-import { useState } from "react";
-import useSearch from "../hooks/useSearch";
+import { useContext } from "react";
 
 import * as Utilites from "./../Utilities/index";
 import * as Components from "./../components/index";
 import useHandleDetails from "../hooks/useHandleDetails";
+import Context from "../Context/Context";
 
 function Home() {
-  // state management //
-  const [querry, setQuerry] = useState("");
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const [getQuerry] = useSearch();
-
-  const [fetchedDetails, setFetchedDetails] = useState({
-    cloudy: 0,
-    humidity: 0,
-    wind: 0,
-    temp: 0,
-    city: 0,
-    weather: "",
-  });
+  const { data, error, fetchedDetails, setFetchedDetails } =
+    useContext(Context);
 
   // parse and set fetched details
   useHandleDetails(setFetchedDetails, data, error);
-
-  // handle search
-  function handleSubmit(e) {
-    e.preventDefault();
-    getQuerry(querry, setData, setError, setLoading);
-  }
 
   return (
     <div
@@ -39,23 +19,15 @@ function Home() {
           Utilites.handleWeatherIcon(fetchedDetails.weather).bg
         })`,
       }}
-      className=" App flex justify-between text-[var(--gray)] h-screen w-screen bg-cover bg-center ring-3"
+      className=" App relative px-[2rem] sm:pl-[4rem] sm:pr-0 flex flex-col sm:flex-row sm:justify-between text-[var(--gray)] h-screen w-screen bg-cover bg-center ring-3"
     >
+      <Components.Logo />
+
       {/* // Left side of the ui on desktop // */}
-      <Components.Left fetchedDetails={fetchedDetails} />
+      <Components.Left />
 
       {/* // Right side of the ui on desktop // */}
-      <Components.Right
-        handleSubmit={handleSubmit}
-        loading={loading}
-        querry={querry}
-        setQuerry={setQuerry}
-        fetchedDetails={fetchedDetails}
-        getQuerry={getQuerry}
-        setData={setData}
-        setError={setError}
-        setLoading={setLoading}
-      />
+      <Components.Right />
     </div>
   );
 }

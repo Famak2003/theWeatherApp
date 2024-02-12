@@ -1,41 +1,20 @@
-import Form from "./Form";
-import PreLocation from "./PreLocation";
-import WeatherInfo from "./WeatherInfo";
+import Form from "./ui/Form";
+import PreLocation from "./ui/PreLocation";
+import WeatherInfo from "./ui/WeatherInfo";
 
-export const preLocation = ["Cyprus", "Nicosia", "New York", "Nigeria"];
-
-function Right({
-  handleSubmit,
-  loading,
-  querry,
-  setQuerry,
-  fetchedDetails,
-  getQuerry,
-  setData,
-  setError,
-  setLoading,
-}) {
+function Right() {
   return (
-    <section className=" Right flex flex-col gap-[2.5rem] self-end w-2/5 h-full bg-[#282323] bg-opacity-50 pl-[2rem] ">
+    <section className=" Right rounded-b-3xl sm:rounded-none order-1 mt-[5rem] sm:mt-0 pb-[2rem] sm:pb-0 sm:order-2 flex self-end flex-col gap-[3rem] w-full sm:w-[45rem] h-fit sm:h-full bg-[#282323] bg-opacity-50 pl-[2rem] ">
       {/* // search ul //  */}
-      <Form
-        handleSubmit={handleSubmit}
-        loading={loading}
-        querry={querry}
-        setQuerry={setQuerry}
-        getQuerry={getQuerry}
-        setData={setData}
-        setError={setError}
-        setLoading={setLoading}
-      />
+      <Form />
 
-      {/* // body // */}
-      <div className=" Body flex flex-col gap-[2.5rem] pr-[2rem]">
+      {/* // sidebar-body // */}
+      <div className=" Body flex flex-col gap-[2rem] sm:gap-[3rem] pr-[2.2rem]">
         {/* // preLocations // */}
-        <PreLocation setQuerry={setQuerry} />
+        <PreLocation />
 
         {/* // weather Information // */}
-        <WeatherInfo fetchedDetails={fetchedDetails} />
+        <WeatherInfo />
       </div>
     </section>
   );
