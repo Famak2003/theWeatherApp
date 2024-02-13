@@ -3,15 +3,14 @@ import Context from "../Context/Context";
 import axios from "axios";
 
 function useLocator() {
-  const { setError, location, locationName, setLocationName } =
-    useContext(Context);
+  const { location, locationName, setLocationName } = useContext(Context);
 
   async function getCord() {
     // checks if location is available //
     if (!location.loaded) {
       return;
     }
-    // if true //
+    // if location.loaded is true //
     const lon = location?.coordinates.lon;
     const lat = location?.coordinates.lat;
 
@@ -19,7 +18,6 @@ function useLocator() {
     const apiKey = process.env.REACT_APP_APIKEY;
 
     try {
-      setError(null);
       const response = await axios.get(
         `${api}geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`,
       );
@@ -30,7 +28,6 @@ function useLocator() {
       console.log(locationName);
     } catch (error) {
       console.error(error?.response?.data?.message);
-      setError(`⚠️ ${error?.response?.data?.message}`);
     }
   }
   return [getCord];

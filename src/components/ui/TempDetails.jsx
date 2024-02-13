@@ -7,7 +7,7 @@ function TempDetails() {
   return (
     // display temperature details accordingly //
     <div className=" self-end flex xs:gap-[.5rem] ss:gap-[1rem]">
-      <h2 className=" text-[5rem] sstext-[6rem] font-semibold textHoverWhite ">
+      <h2 className=" text-[5rem] ss:text-[6rem] font-semibold textHoverWhite ">
         {fetchedDetails.temp}
       </h2>
       <div className="text-[var(--white)] self-end">

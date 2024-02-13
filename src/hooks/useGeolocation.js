@@ -6,6 +6,7 @@ const useGeoLocation = () => {
     coordinates: { lat: "", lon: "" },
   });
 
+  // runs when location fetch is successful //
   const onSuccess = (location) => {
     setLocation({
       loaded: true,
@@ -16,6 +17,7 @@ const useGeoLocation = () => {
     });
   };
 
+  // runs when location fetch is failed //
   const onError = (error) => {
     setLocation({
       loaded: false,
@@ -25,13 +27,17 @@ const useGeoLocation = () => {
     });
   };
 
+  // makes sure to only fetch userlocation on mount
   useEffect(() => {
+    // set an error if browser doesn't support navigator
     if (!navigator.geolocation) {
       onError({
         message: "Geolocation not supported",
       });
-    }
 
+      return;
+    }
+    // grab user's coordinate if supported by browser
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
 
