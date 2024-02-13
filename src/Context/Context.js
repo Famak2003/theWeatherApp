@@ -1,15 +1,17 @@
 import { createContext, useState } from "react";
-import useSearch from "../hooks/useSearch";
+
+import * as Hooks from "./../hooks/index";
 
 const Context = createContext({});
 
 export function MyContextProvider({ children }) {
   // state management //
+  const [locationName, setLocationName] = useState("");
   const [querry, setQuerry] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [getQuerry] = useSearch();
+  const [getQuerry] = Hooks.useSearch();
   const [fetchedDetails, setFetchedDetails] = useState({
     cloudy: 0,
     humidity: 0,
@@ -24,6 +26,8 @@ export function MyContextProvider({ children }) {
     e.preventDefault();
     getQuerry(querry, setData, setError, setLoading);
   }
+
+  const location = Hooks.useGeoLocation();
 
   return (
     <Context.Provider
@@ -40,6 +44,9 @@ export function MyContextProvider({ children }) {
         fetchedDetails,
         setFetchedDetails,
         handleSubmit,
+        locationName,
+        setLocationName,
+        location,
       }}
     >
       {children}

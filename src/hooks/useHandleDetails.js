@@ -10,9 +10,9 @@ function useHandleDetails(setFetchedDetails, data, error) {
         cloudy: `${error}`,
         humidity: `${error}`,
         wind: `${error}`,
-        temp: `${error}`,
-        city: `${error}`,
-        weather: `${error}`,
+        temp: 0,
+        city: `unavailable`,
+        weather: `unavailable`,
       });
     } else {
       // setting usefull data from the response if error stays null

@@ -12,7 +12,9 @@ function useSearch() {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get(`${api}q=${querry}&APPID=${apiKey}`);
+      const response = await axios.get(
+        `${api}data/2.5/weather?q=${querry}&APPID=${apiKey}`,
+      );
       if (response?.status !== 200) {
         throw new Error("There is an error while getting weather information");
       }
