@@ -22,7 +22,7 @@ function useLocator() {
         `${api}geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`,
       );
       if (response?.status !== 200) {
-        throw new Error("There is an error getting co-ordinates");
+        throw new Error("There was an error getting user location");
       }
       setLocationName(response.data[0].name.trim().toLowerCase());
       console.log(locationName);
