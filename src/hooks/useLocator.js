@@ -3,7 +3,7 @@ import Context from "../Context/Context";
 import axios from "axios";
 
 function useLocator() {
-  const { location, locationName, setLocationName } = useContext(Context);
+  const { location, setLocationName } = useContext(Context);
 
   async function getCord() {
     // checks if location is available //
@@ -24,8 +24,11 @@ function useLocator() {
       if (response?.status !== 200) {
         throw new Error("There was an error getting user location");
       }
-      setLocationName(response.data[0].name.trim().toLowerCase());
-      console.log(locationName);
+      if (response?.data[0]?.name?.startsWith("Gazimağusa")) {
+        setLocationName("Gazimağusa");
+      } else {
+        setLocationName(response.data[0].name.trim().toLowerCase());
+      }
     } catch (error) {
       console.error(error?.response?.data?.message);
     }
