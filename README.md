@@ -50,4 +50,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 [FamakindeOluwapelumi@gmail.com](mailto:FamakindeOluwapelumi@gmail.com)
+
 Project Link: [https://github.com/Famak2003/theWeatherApp.git](https://github.com/Famak2003/theWeatherApp.git)
