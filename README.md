@@ -6,6 +6,7 @@ This is a weather application that shows user weather information about their cu
 - [Features](#features)
 - [Usage](#usage)
 - [Getting Started](#getting_started)
+- [Technology](#technology)
 - [Contributor](#contributor)
 - [License](#license)
 - [Contact](#contact)
